@@ -2,11 +2,9 @@ package org.usfirst.frc.team3464.robot;
 
 import edu.wpi.first.wpilibj.SpeedController;
 
-public class SwerveModule {
-	public static final float TOLERANCE = 0.05f;
-	public static final float PIVOT_SPEED = 0.7f;
-	public static final long CALIBRATION_PERIOD = 10;
+import static org.usfirst.frc.team3464.robot.Config.*;
 
+public class SwerveModule {
 	private MA3Encoder enc;
 	private SpeedController drive, pivot;
 
@@ -40,11 +38,11 @@ public class SwerveModule {
 		float speed;
 		float diff = angle - this.getActualAngle();
 		diff = diff < 0 ? diff + (float) Math.PI * 2 : diff;
-		speed = diff < Math.PI ? PIVOT_SPEED : -PIVOT_SPEED;
+		speed = diff < Math.PI ? SWERVE_PIVOT_SPEED : -SWERVE_PIVOT_SPEED;
 
 		pivot.set(speed);
-		while (Math.abs(angle - this.getActualAngle()) < TOLERANCE)
-			try { Thread.sleep(CALIBRATION_PERIOD); }
+		while (Math.abs(angle - this.getActualAngle()) < SWERVE_TOLERANCE)
+			try { Thread.sleep(SWERVE_CALIBRATION_PERIOD); }
 			catch (InterruptedException e) {}
 		pivot.set(0.0f);
 	}

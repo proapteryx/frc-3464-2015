@@ -7,15 +7,12 @@ public class SwerveDrive {
 
 	public SwerveDrive(SpeedController[] drives, SpeedController[] pivots, int[] sensors)
 	{
-		if (drives.length != pivots.length || pivots.length != sensors.length)
-			try {
-				throw new WhatAreYouRetardedException("Arrays passed to SwerveDrive() are the wrong length.");
-			} catch (WhatAreYouRetardedException e) {
-				e.printStackTrace();
-			}
+		int len = drives.length < pivots.length
+				? (drives.length < sensors.length ? drives.length : sensors.length)
+				: (pivots.length < sensors.length ? pivots.length : sensors.length);
 
-		this.modules = new SwerveModule[drives.length];
-		for (int i = 0; i < drives.length; ++i)
+		this.modules = new SwerveModule[len];
+		for (int i = 0; i < len; ++i)
 			this.modules[i] = new SwerveModule(drives[i],pivots[i],sensors[i]);
 	}
 	

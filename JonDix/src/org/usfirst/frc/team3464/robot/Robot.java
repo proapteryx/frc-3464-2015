@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
 
+import static org.usfirst.frc.team3464.robot.Config.*;
+
 /**
  * This is a demo program showing the use of the RobotDrive class.
  * The SampleRobot class is the base of a robot application that will automatically call your
@@ -26,9 +28,6 @@ import edu.wpi.first.wpilibj.Victor;
  * this system. Use IterativeRobot or Command-Based instead if you're new.
  */
 public class Robot extends SampleRobot {
-	public static final int[] driveMotorPins = {0, 1, 2, 3};
-	public static final int[] pivotMotorPins = {4, 5, 6, 7};
-	public static final int[] sensorPins = {0, 1, 2, 3};
     SwerveDrive robotDrive;
     Joystick stick;
 
