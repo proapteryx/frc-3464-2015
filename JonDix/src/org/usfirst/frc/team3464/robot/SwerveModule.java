@@ -42,7 +42,7 @@ public class SwerveModule {
 
 		pivot.set(speed);
 		while (Math.abs(angle - this.getActualAngle()) < SWERVE_TOLERANCE)
-			try { Thread.sleep(SWERVE_CALIBRATION_PERIOD); }
+			try { Thread.sleep(SWERVE_ADJUSTMENT_PERIOD); }
 			catch (InterruptedException e) {}
 		pivot.set(0.0f);
 	}
